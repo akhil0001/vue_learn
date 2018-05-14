@@ -1,0 +1,59 @@
+<!-- TODO: enhance this app -->
+
+<div id="app-9">
+    <p>
+        Ask me a question 
+    </p>
+    <input type="text" name="" id="" v-model="question">
+    <p>{{ answer }}</p>
+    <img :src="url">
+</div>
+
+<script src="./vuejs/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+<script>
+
+    var watcher = new Vue({
+        el:'#app-9',
+        data:{
+            answer:'I cannot answer',
+            question:'',
+            url:'https://yesno.wtf/assets/no/16-b66d2db7543f5259c86abc166d6901cf.gif'
+        },
+        watch:{
+            question: function(newQUestion, oldQuestion){
+                this.answer = "You are typing";
+                this.debounceAnswer();
+                this.debounceUrl();
+            }
+        },
+        created: function(){
+            this.debounceAnswer = _.debounce(this.getAnswer,500);
+          
+        },
+        methods:{
+            getAnswer: function(){
+                this.answer = "Thinking..";
+                var vm = this;
+                axios.get('https://yesno.wtf/api')
+                     .then(function(response){
+                         vm.answer = _.capitalize(response.data.answer);
+                         vm.url = response.data.image;
+                         console.log(response);
+                     })
+                     .catch(function (error) {
+                     vm.answer = 'Error! Could not reach the API. ' + error
+                         })
+                
+                //usage of axios to get the data from the external API  
+
+
+            }
+        }
+    })
+
+
+
+
+</script>

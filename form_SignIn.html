@@ -1,0 +1,20 @@
+<form id="app">
+        <p>Username</p>
+        <input type="text" name="Username" id="username" v-model="username">
+        <p>Password</p>
+        <input type="password" v-model="password">
+        <p>Are you an Avenger</p>
+        <input type="checkbox" v-model="checked">
+        <label for="checkbox">{{checked}}</label>
+        <p v-if="checked">Who is ur sidekick</p>
+        <div id="showOnlyIfYouareAnAvenger">
+                <select v-model="selected">
+                    <option disabled value="Please select One">Please select One</option>
+                    <option value="War machine">War machine</option>
+                    <option value="Bucky">Bucky</option>
+                    <option value="Drax">Drax</option>
+                    <option value="Wong">Wong</option>
+                </select>
+        </div>
+        
+</form>

@@ -1,0 +1,28 @@
+<div id="app">
+    <template v-if="new_user">
+        <input type="text" name="" id="" key="new-user">
+    </template>
+    
+    <template v-else>
+        <input type="text" name="" id="" key="old-user">
+    </template>    
+
+    <button @click="toggleUserType">Toggle</button>
+</div>
+
+<script src="vuejs/vue.js"></script>
+<script>
+
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            new_user: true
+        },
+        methods:{
+            toggleUserType : function(){
+                this.new_user = !this.new_user;
+            }
+        }
+    })
+
+</script>

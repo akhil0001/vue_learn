@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Decision Tree</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+  
+  <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic|Material+Icons'>
+<link rel='stylesheet prefetch' href='https://unpkg.com/vue-material@beta/dist/vue-material.min.css'>
+<link rel='stylesheet prefetch' href='https://unpkg.com/vue-material@beta/dist/theme/default-dark.css'>
+
+  
+  
+</head>
+
+<body>
+
+  <div id="app">
+      <div class="page-container">
+          <md-app md-waterfall>
+            <md-app-toolbar class="md-primary" md-with-hover>
+              <span class="md-title">Download the specific plugin in Kony Visualizer Enterprise 8.1.x & 8.2.x Tree</span>
+            </md-app-toolbar>
+      
+            <md-app-drawer md-permanent="full">
+              <md-toolbar class="md-accent" md-elevation="0">
+                  <span class="md-title">Info</span>
+              </md-toolbar>
+              <br>
+              <md-card md-with-hover class="md-primary">
+                  <md-card-header>
+                    <md-card-header-text>
+                      <div class="md-title">Java Message Service</div>
+                      <md-card-content>
+                          The Java Message Service API is a Java Message Oriented Middleware API for sending messages between two or more clients. It is an implementation to handle the Producer-consumer problem. JMS is a part of the Java Platform, Enterprise Edition, and is defined by a specification developed under the Java Community Process as JSR 914.
+                      </md-card-content>
+                    </md-card-header-text>
+                  </md-card-header>
+                </md-card>
+                <br>
+                <md-card class="md-default" md-with-hover>
+                  <md-ripple>
+                    <md-card-header>
+                      <div class="md-title">Related Articles</div>
+                     
+                    </md-card-header>
+            
+                    <md-card-content>
+<p>                    <a href="http://docs.kony.com/konylibrary/konyfabric/kony_fabric_linux_install_guide/Content/Installing_Kony_Fabric_Tomcat.htm">Installing Kony fabric on Tomcat</a> </p>
+                      <p><a href="http://docs.kony.com/konylibrary/konyfabric/kony_fabric_windows_install_guide/Content/Installing_MobileFabric_JBoss_existing.htm">Configure JMS on Existing standalone JBoss</a>  
+                      <p><a href="http://docs.kony.com/konylibrary/konyfabric/kony_fabric_windows_install_guide/Content/Installing_MobileFabric_JBoss_existing.htm">Configure JMS on Existing standalone JBoss</a>  
+                      <p><a href="http://docs.kony.com/konylibrary/konyfabric/kony_fabric_windows_install_guide/Content/Installing_MobileFabric_JBoss_existing.htm">Configure JMS on Existing standalone JBoss</a>  
+                      </p>
+                 
+                  </md-card-content>
+            
+            
+                  </md-ripple>
+                </md-card>
+            
+             </md-app-drawer>
+      
+            <md-app-content>
+                <div>
+                    <md-steppers md-vertical :md-active-step.sync="active">
+                      <md-step id="first" md-label="Check the status of JMS" :md-done.sync="first">
+                        <p> Check if JMS has been properly configured and installed as per the documentation and it is up and running.</p>
+                      </md-step>
+                
+                      <md-step id="second" md-label=" Check metrics.log file for the error statement" :md-done.sync="second" >
+                        <p> In most of the cases we have observed the below issue in the metrics.log file when there is issue related to Basic or Standard reports.
+                         
+                Error:
+                <b>There is no corresponding session_key for this request in dw_key_session table, for this SID : 1503504807581-279d-2f5c-b11e </b> </p>
+                        <p> Is this error present in log file?</p>
+                        <md-button class="md-dense md-raised md-primary" @click="setDone('second','fourth')">Yes</md-button>
+                         <md-button class="md-dense md-raised md-accent" @click="setDone('second','sixth')">No</md-button>
+                      </md-step>
+                
+                      <md-step id="third" md-label=" Check if IST call has been suppressed" :md-done.sync="third">
+                        <p> Check if IST call has been suppressed from the application code in either pre-appinit or post-appinit. Check if kony.license.disableMetrics() API is called in the Visualizer application. This code should be removed if it exists. </p>
+                        
+                      </md-step>
+                            <md-step id="fourth" md-label="Check middleware.log" :md-done.sync="fourth">
+                        <p>Check middleware.log if all the params with name konyreportingparams are getting printed in the middleare.log file(enable DEUBG mode to middleware component. Refer <a href="http://docs.kony.com/konylibrary/konyfabric/kony_fabric_linux_install_guide/Default.htm#Change_Log_Levels.htm%3FTocPath%3DFAQs%2520and%2520Troubleshooting%7C_____7 for steps">http://docs.kony.com/konylibrary/konyfabric/kony_fabric_linux_install_guide/Default.htm#Change_Log_Levels.htm%3FTocPath%3DFAQs%2520and%2520Troubleshooting%7C_____7 for steps).</a></p>
+                      
+                      </md-step>
+                            <md-step id="fifth" md-label="Check  the middleware received the correct payload" :md-done.sync="fifth">
+                        <p> When the middleware received the correct payload then it will print the below line in DEBUG mode.
+                
+                “Kony reporting params are :” If the device details matches with the one printed then proceed further to check metrics.log. </p>
+                      
+                      </md-step>
+                      <md-step id="sixth" md-label="Search for the below logs in the middleware.log" :md-done.sync="sixth">
+                        <p> Middleware will log the below messages if the device did not send the IST payload or processing fails. Search for the below logs in the middleware.log
+                
+                “Reporting params not found in the IST request”. Or “JSON Error” if the payload is not correct JSON or “Exception while logging session tracking information” if there is any error in the IST call from device to SDK </p>
+                      
+                      </md-step>
+                           <md-step id="seventh" md-label="Check the konyreportsDB middleware_request and middleware_session table" :md-done.sync="seventh">
+                        <p>  If the middleware.log is also correct check the DB if the data is getting pushed correctly. We have to check the konyreportsDB middleware_request and middleware_session table if there are any entries related to the device from which we are testing the application.
+                
+                If there is no data check if there are any entries in the invalid_requests table of reports DB. Collect the data/error message to debug further.  </p>
+                <md-button class="md-dense md-raised md-primary" @click="showDialog = true">Done</md-button>
+                       
+                      </md-step>
+                    </md-steppers>
+                  </div>
+               </md-app-content>
+          </md-app>
+        </div>
+  
+<div>
+    <md-dialog :md-active.sync="showDialog">
+        <md-dialog-title>Update</md-dialog-title>
+  
+        <md-tabs md-dynamic-height>
+          <md-tab md-label="#Problem Statement#">
+              <p>#Problem Statement#</p>
+              <p>Getting out of memory error in android apps.</p>
+              <p>#Required Info#</p>
+              <p>1) Product
+                  2) Product feature
+                  3) Product version
+                  4) Request you to share your contact#</p>
+             </md-tab>
+  
+          <md-tab md-label="#Update#">
+              <p>#Update#</p>
+              <p>Getting out of memory error in android apps.</p>
+              <p>#Required Info#</p>
+              <p>1) Product
+                  2) Product feature
+                  3) Product version
+                  4) Request you to share your contact#</p>
+          
+          </md-tab>
+  
+         
+        </md-tabs>
+  
+        <md-dialog-actions>
+          <md-button class="md-primary" @click="showDialog = false">Copy</md-button>
+          <md-button class="md-primary" @click="showDialog = false">Close</md-button>
+        </md-dialog-actions>
+      </md-dialog>
+</div>
+</div>
+  <script src='https://unpkg.com/babel-standalone/babel.min.js'></script>
+<script src='https://unpkg.com/vue/dist/vue.js'></script>
+<script src='https://unpkg.com/vue-material@beta'></script>
+
+  
+
+    <script  src="js/index.js"></script>
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+<div id="app">
+    <button @click="sayHello">Click Me!</button>
+
+</div>
+
+<script src="vuejs/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el:'#app',
+        data:{counter:0},
+        methods:{
+            sayHello: function(event)
+            {
+                this.counter++;
+                alert('I am called')
+                if(event)
+                {
+                    alert('This event is called by'+event.target.tagName);
+                    console.dir(event);
+                }
+            }
+        }
+    });
+    vm.sayHello();
+
+</script>

@@ -1,0 +1,60 @@
+<div id="app">
+        <h1 v-if="didThanosSpare">
+                Hi you are seeing me because thanos spared me!
+            </h1>
+            <h1 v-else>
+                Thanos demands your silence
+            </h1>
+            <template v-if="didAvengersWin">
+                <h3>
+                    These are avengers who are alive
+                </h3>
+                <ol>
+                    <li>Iron Man</li>
+                    <li>Captain America</li>
+                    <li>Thor</li>
+                    <li>Hulk</li>
+                    <li>Black Widow</li>
+                    <li>Groot</li>
+                    <li>Okoye</li>
+                    <li>War Machine</li>
+                    <li>M'Baaku</li>
+                </ol>
+            </template>
+            <template v-else>
+                <ol>
+                    <li>So Many...</li>
+                </ol>
+            </template>
+
+            <template v-if="a+b < 5"> 
+                <p>Alright a and b together are stronger than 5</p>
+            </template>
+            <template v-else="a+b > 5">
+                <p>5 is stronger than a+b</p>
+            </template>
+            
+</div>
+
+
+
+<style>
+    body{
+      font-family:'Courier New', Courier, monospace  
+    }
+</style>
+
+<script src="vuejs/vue.js"></script>
+<script>
+
+    var vm = new Vue({
+        el:'#app',
+        data:{
+                didThanosSpare:true,
+                didAvengersWin:true,
+                a:2,
+                b:3
+        }
+    })
+
+</script>

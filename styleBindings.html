@@ -1,0 +1,30 @@
+<div id="app">
+    <div v-bind:style="{color:colorDefinedInVueObject,fontSize:fontSize}">
+
+        This demonstartes how one can bind the css inline so that it is easy for short terms
+
+    </div>
+    <br>
+    <div :style = "styleJSONObject">
+
+        This demonstartes the complete outline css binding 
+
+    </div>
+</div>
+<script src="vuejs/vue.js"></script>
+
+
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            colorDefinedInVueObject: 'red',
+            fontSize: '24px',
+            styleJSONObject:{
+                fontSize: '20px',
+                color: 'black',
+                fontFamily: 'verdana'
+            }
+        }
+    });
+</script>

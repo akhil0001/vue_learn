@@ -1,0 +1,20 @@
+<div id="app">
+    <button @click="warn('Thanos demands your silence',$event)">Snap me!</button>
+</div>
+
+<script src="vuejs/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el:'#app',
+        data:{
+
+        },
+        methods:{
+            warn:function(msg,event){
+                if(event)event.preventDefault();
+                alert(msg);
+                console.log(event);
+            }
+        }
+    });
+</script>

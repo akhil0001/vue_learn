@@ -1,0 +1,57 @@
+<div id="app">
+    <div :class="{inlineBound:isChangeTheColorofText}">
+
+        This is inline class Binding where we have the json defined in the html bind directive itself
+
+    </div>
+    <br>
+    <div :class="isChangeThefont">
+        This is outline class Binding where we have the json defined in vm component
+    </div>
+    <br>
+    <div :class = "isChangeTheBackground">
+        This is the outline classs Binding via computed Property so that you can acctually change the 
+        bindings even at run time
+    </div>
+    <br>
+    <div :class = "[isChangeTheBackground,isChangeThefont]">
+        This is to show we can bind the array of classes so that you can activate any class at any time
+
+    </div>
+</div>
+<style>
+    div {
+        color: black;
+        font-family: 'Courier New', Courier, monospace;
+    }
+
+    .inlineBound {
+        color: brown;
+    }
+
+    .outlineBound {
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+    .isDanger{
+        background: red;
+    }
+</style>
+
+<script src="vuejs/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            isChangeTheColorofText: true,
+            isChangeThefont: {
+                outlineBound: true
+            },
+            isDanger : true       
+        },
+        computed:{
+            isChangeTheBackground: function(){
+                return{ isDanger:this.isDanger} 
+            }
+        }
+    })
+</script>

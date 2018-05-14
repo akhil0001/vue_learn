@@ -1,0 +1,24 @@
+<div id="app8">
+    <p>{{ message }}</p>
+    <p>Reverse Message</p>
+    <p>{{ reverseMessage }}</p>
+    <input type="text" name="" id="" v-model="message">
+</div>
+
+<script src="./vuejs/vue.js"></script>
+<script>
+
+    var vm = new Vue({
+        el:'#app8',
+        data:{
+            message:'I am groot'
+        },
+        computed:{
+            reverseMessage: function(){
+                return this.message.split(' ').reverse().join(' ');
+            }
+        }
+    })
+
+
+</script>

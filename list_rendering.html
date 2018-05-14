@@ -1,0 +1,44 @@
+
+<div id="app">
+    <ul>
+        <li v-for = "item in items">{{ item.text }}</li>
+    </ul>
+    <ul>
+        <li v-for ="(item,index) in items">
+            {{parentItem}} - {{index}} - {{item.text}}
+        </li>
+    </ul>
+    <br>
+    <p>This iterates through the properties of an object </p>
+    <ul>
+        <li v-for="(value,key,index) of jsonObject">
+            {{key}} -- > {{value}} --> {{index}}
+        </li>
+    </ul>
+
+</div>
+
+<style>
+    body{
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+    }
+</style>
+
+<script src="vuejs/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            parentItem:'I am awesome',
+            items:[
+                {text:'Ant Man and Wasp'},
+                {text:'Aquaman'}
+            ],
+            jsonObject:{
+                "MovieName":'Iron Man',
+                'Starring': 'Robert Downey Jr',
+                'Villain':'Obadiah'
+            }
+        }
+    })
+</script>
