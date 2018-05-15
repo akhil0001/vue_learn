@@ -3,11 +3,11 @@
         <input type="text" name="Username" id="username" v-model="username">
         <p>Password</p>
         <input type="password" v-model="password">
-        <p>Are you an Avenger</p>
+        <p> I am an Avenger
         <input type="checkbox" v-model="checked">
-        <label for="checkbox">{{checked}}</label>
-        <p v-if="checked">Who is ur sidekick</p>
-        <div id="showOnlyIfYouareAnAvenger">
+        <label for="checkbox">{{checked}}</label></p>
+        <p v-if="checked">Then Who is ur sidekick</p>
+        <div id="showOnlyIfYouareAnAvenger" v-if="checked">
                 <select v-model="selected">
                     <option disabled value="Please select One">Please select One</option>
                     <option value="War machine">War machine</option>
@@ -18,3 +18,15 @@
         </div>
         
 </form>
+
+<script src="vuejs/vue.js"></script>
+<script>
+        var vm = new Vue({
+                el:'#app',
+                data:{
+                        checked: false,
+                        password:'',
+                        username:''
+                }
+        })
+</script>
