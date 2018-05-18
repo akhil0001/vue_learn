@@ -1,6 +1,9 @@
 <div id="components-demo">
-        <button-counter></button-counter>
     <button-counter></button-counter>
+    <button-counter></button-counter>
+    <!-- <input type="text" name="" id="" v-model="message"> -->
+    <para-component></para-component>
+    <para-component></para-component>
 </div>
 
 
@@ -9,17 +12,21 @@
 
 <script src="./vuejs/vue.js"></script>
 <script>
-    
-
     Vue.component('button-counter', {
-  data: function () {
-    return {
-      count: 0
-    }
-  },
-  template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
-})
-new Vue({
-        el:'#components-demo'
+        data: function () {
+            return {
+                count: 0
+            }
+        },
+        template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
+    });
+    Vue.component('para-component',{
+        data:   {
+            message:'Hi'
+        },
+        template:'<p>{{message}}</p>'
+    })
+    new Vue({
+        el: '#components-demo'
     });
 </script>
