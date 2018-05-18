@@ -4,29 +4,68 @@
         <p>Password</p>
         <input type="password" v-model="password">
         <p> I am an Avenger
-        <input type="checkbox" v-model="checked">
-        <label for="checkbox">{{checked}}</label></p>
-        <p v-if="checked">Then Who is ur sidekick</p>
-        <div id="showOnlyIfYouareAnAvenger" v-if="checked">
-                <select v-model="selected">
-                    <option disabled value="Please select One">Please select One</option>
-                    <option value="War machine">War machine</option>
-                    <option value="Bucky">Bucky</option>
-                    <option value="Drax">Drax</option>
-                    <option value="Wong">Wong</option>
+                <input type="checkbox" v-model="checked">
+                <label for="checkbox">{{checked}}</label>
+        </p>
+        <template v-if="checked">
+                <p v-if="checked">Then Who is ur sidekick</p>
+                <div id="showOnlyIfYouareAnAvenger" v-if="checked">
+                        <select v-model="selected">
+                                <option disabled value="Please select One">Please select One</option>
+                                <option value="War machine">War machine</option>
+                                <option value="Bucky">Bucky</option>
+                                <option value="Drax">Drax</option>
+                                <option value="Wong">Wong</option>
+                        </select>
+                        <p v-if="selected">You have selected {{selected}} as your sidekick</p>
+
+                </div>
+        </template>
+        <template v-else>
+                <p>Which avenger do u like the most?</p>
+                <select v-model="selectedAvenger" multiple>
+                        <option disabled value="Please select One">Please select One</option>
+                        <option value="Captain America">Captain America</option>
+                        <option value="Iron man">Iron man</option>
+                        <option value="Star Lord">Star Lord</option>
+                        <option value="Dr Strange">Dr Strange</option>
                 </select>
-        </div>
+                <p v-if="selectedAvenger">You have selected {{selectedAvenger}} as your favourite</p>
+                <template v-if="selectedAvenger">
+                        <select name="" id="">
+                        <option v-for="option in options" :value="option.value">
+                                {{option.text}}
+                        </option>
+                        </select>
+                </template>
         
+        </template>
+
+        <input type="number" name="" id="" v-model.number="age">
+        <!-- this changes the return type of the input as number -->
+        <input type="text" v-model.trim="message">
+
+
 </form>
 
 <script src="vuejs/vue.js"></script>
 <script>
         var vm = new Vue({
-                el:'#app',
-                data:{
+                el: '#app',
+                data: {
                         checked: false,
-                        password:'',
-                        username:''
+                        password: '',
+                        username: '',
+                        selected: '',
+                        selectedAvenger:[],
+                        options:[
+                                {'text':'optionalText1','value':'1'},
+                                {'text':'text2','value':'2'}
+                        ],
+                        age:20,
+                        message:''
                 }
         })
 </script>
+
+<!-- TODO:custom inputs in components -->
