@@ -1,0 +1,36 @@
+<!-- TODO: to understand what is Object.freeze and what is difference b/w it and const -->
+
+<div id="app">
+    {{ a }}
+    <input type="text" name="" id="" v-model="a">
+</div>
+
+
+
+
+<script src="../vuejs/vue.js"></script>
+<script>
+    var data = {a:1};
+    var dataWhenYouDonotKnowWhenYouwillInitializeTheObject = {
+        a:0,
+        b:null,
+        c:false
+    };
+    var dataWhenYouwantToFreezeIt = {
+        a:1,
+        b:2,
+        c:3
+    }
+    Object.freeze(dataWhenYouwantToFreezeIt);
+    //this above statement freezes and will no longer is watched by vue reactive system
+    var vm = new Vue({
+        el:'#app',
+        data:data
+    })
+
+vm.$watch('a',function(newvalue,oldvalue){
+    console.log('You have just changed from '+oldvalue+'t o '+newvalue);
+})
+
+
+</script>

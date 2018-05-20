@@ -1,0 +1,25 @@
+<div id="app">
+    <ul>
+        <li v-for="(item,index) in items">{{item}}
+            <input type="text" id="kooler">
+            <button @click="saveTheItem(index)">save</button>
+        </li>
+    </ul>
+</div>
+
+<script src="../vuejs/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            items:['kool','lol','rofl']
+        },
+        methods:{
+            saveTheItem:function(index)
+            {
+              this. items[index] = document.getElementById('kooler').value;
+            }
+        }
+    })
+
+</script>

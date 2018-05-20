@@ -1,0 +1,39 @@
+<!-- This is clearly an experimental v-model directive usage. If you add any new element to 
+the todo list and then still it is binded to the element
+
+
+ -->
+<div id="app-3">
+    <span v-if="visible">Now you can see my list</span>
+    <ol>
+        <li v-for="todo in todos">
+            {{todo.text}}
+        </li>
+    </ol>
+    <input type="text" name="addTodo" id="addTodo" placeholder="Add your task here" v-model="newTask.text">
+    <button v-on:click="addTodo">Add</button>
+</div>
+
+
+
+<script src="../vuejs/vue.js"></script>
+<script>
+    var app3 = new Vue({
+        el:'#app-3',
+        data:{
+            visible: true,
+            todos:[
+                {text:'Learn vueJS'},
+                {text:'Learn Vuetify'},
+                {text:'Build something cool'}
+            ],
+            newTask:{text:'I am awesome'}
+        },
+        methods:{
+            addTodo: function(){
+                var newTask = this.newTask;
+                this.todos.push(newTask);
+            }
+        }
+    })
+</script>

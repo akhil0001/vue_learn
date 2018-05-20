@@ -1,0 +1,75 @@
+
+<div id="app">
+    <ol>
+        <todo-item
+        v-for='item in todoItems'
+        :Nachos='item'
+        :key='item.id'
+        :style="{color:newColor,backgroundColor:newBgColor,fontSize:newfontSize+'px'}"
+        @change-theme="changeTheme()"
+        @increase-fontSize = "increaseFontSize($event)"
+        >
+    </todo-item>
+    </ol>
+</div>
+
+
+
+
+
+<script src="./vuejs/vue.js"></script>
+
+<script>
+    Vue.component('todo-item',{
+        data:function()
+        {
+            return {counter:0};
+        },
+        props:['Nachos'],
+        template:`
+        <li class="todo-item">
+        <h1>{{Nachos.title}}</h1>
+        <p>{{Nachos.description}}</p>
+        <button>Completed</button>
+        <button @click="counter++">Increase the priority</button>
+        <p> Priority : {{counter}}</p>
+        <button @click="$emit('change-theme')">
+            Change the theme
+        </button>
+        <button @click = "$emit('increase-fontsize',2)">
+            Increase the font size
+        </button>
+        </li>
+        `
+    });
+
+
+
+    var vm =new Vue({
+        el:'#app',
+        data:{
+            todoItems:[
+                {title:'title1',description:'descrption1',doc:'00-01-19'},
+                {title:'title2',description:'descrption2',doc:'00-02-19'}
+            ],
+            newColor:'#fff',
+            newBgColor:'#111',
+            newfontSize:18
+        },
+        methods:{
+            changeTheme:function()
+            {
+                this.newColor = '#111';
+                this.newBgColor = '#eee';
+            },
+            increaseFontSize:function(inputFromtheEvent)
+            {
+                this.newfontSize += inputFromtheEvent;
+            }
+        }
+    })
+
+
+
+
+</script>
