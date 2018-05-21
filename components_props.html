@@ -1,0 +1,22 @@
+<div id="app">
+<avenger name="Iron Man"></avenger>
+<avenger name="Captain America"></avenger>
+</div>
+
+<script src="./vuejs/vue.js"></script>
+<script>
+    Vue.component('avenger',{
+        data:function(){
+            return {
+                
+            } ;
+        },
+        props:['name'],
+        template:'<h1>{{name}}</h1>'
+    })
+
+    var vm =new Vue({
+        el:'#app',
+        data:{}
+    });
+</script>

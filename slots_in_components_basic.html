@@ -1,0 +1,28 @@
+<div id="app">
+<alert-box>
+   I am your father Luke!
+</alert-box>
+</div>
+<style>
+    #alertBox{
+        background: #111;
+        color:#ddd;
+        font-family: 'Courier New', Courier, monospace
+    }
+</style>
+
+<script src="./vuejs/vue.js"></script>
+<script>
+    Vue.component('alert-box',{
+        template:`
+        <div id="alertBox">
+        <h4>Nooo!</h4>
+        <slot></slot>
+        </div>
+        `
+    });
+
+    var vm = new Vue({
+        el:'#app'
+    })
+</script>

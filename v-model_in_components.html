@@ -1,0 +1,46 @@
+
+<div id="app">
+    <vmodel-sample
+    v-model="searchText">
+</vmodel-sample>
+<p>{{searchText}}</p>
+<vmodel-sample
+:bind="searchText"
+@input="vModelDuplicate">
+
+</vmodel-sample>
+</div>
+
+<script src="./vuejs/vue.js"></script>
+<script>
+    Vue.component('vmodel-sample',{
+        data:function()
+        {
+            return{
+
+            }
+        },
+        props:['someProperty'],
+        template:`
+        <div>
+        <h1>This is a test for v-model on components</h1>
+        <input type='text'
+        :value='someProperty'
+        @input="$emit('input',$event.target.value)">
+        </div>
+        `
+    });
+
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            searchText:''
+        },
+        methods:{
+            vModelDuplicate:function(inputFromTheEmit)
+            {
+                this.searchText = inputFromTheEmit;
+            }
+        }
+    })
+</script>
