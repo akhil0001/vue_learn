@@ -14,6 +14,10 @@
         :dateapp='duplicateDateComputed'></date-element>
         <!-- <dashboard></dashboard>
         <tasks></tasks> -->
+        <todo-item
+        v-for="task in tasks"
+        :todotask="task"
+        @check-the-box="task.checked = !task.checked"></todo-item>
     </div>
     <script src="../vuejs/vue.js"></script>
     <script src="main.js"></script>

@@ -14,14 +14,28 @@ Vue.component('date-element',{
     props:['dateapp']
 });
 
+Vue.component('todo-item',{
+    template:`
+    <div v-if="todotask.checked">
+    <p>{{todotask.desc}}</p>
+    <input type="checkbox"
+    @click="$emit('check-the-box')">
+    </div>`,
+    props:['todotask']
+});
+
 var vm = new Vue({
     el:'#app',
     data:{
         duplicateDate:{},
-        seconds:0
+        seconds:0,
+        tasks:[
+            {desc:'Hi',checked:true},
+            {desc:'Hello',checked:false}
+        ]
     },
     methods:{
-
+        
     },
     computed:
     {duplicateDateComputed: function()
