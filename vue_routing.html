@@ -1,0 +1,37 @@
+<div id="app">
+    <h1>Hello Universe</h1>
+    <p>
+        <router-link to="/foo">Go to foo</router-link>
+        <router-link to="/bar">Go to bar</router-link>
+    </p>
+    <router-view></router-view>
+</div>
+
+
+
+
+
+
+
+
+<script src="./vuejs/vue.js"></script>
+<script src="./vuejs/vue-router.js"></script>
+<script>
+  
+  const foo = { template: `<p> I am good </p>`}
+  const bar = { template: `<p> I am bad </p>`}
+
+  const routes = [
+      {path: '/foo' , component: foo},
+      {path:'/bar', component: bar}
+  ]
+
+    const router = new VueRouter({
+        routes
+    })
+
+    const app = new Vue({
+        el:'#app',
+        router
+    })
+</script>

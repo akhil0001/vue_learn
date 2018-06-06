@@ -1,0 +1,38 @@
+<div id="app">
+        <p>
+                <router-link to="/user/foo">/user/foo</router-link>
+                <router-link to="/user/bar">/user/bar</router-link>
+              </p>
+              <router-view></router-view>
+</div>
+
+
+
+
+
+
+
+
+
+<script src="./vuejs/vue.js"></script>
+<script src="./vuejs/vue-router.js"></script>
+<script>
+    const User = {
+        template: `<div>User--> {{ $route.params.id }}</div>`
+    }
+
+    const routes = [
+        { path : '/user/:id', component: User}
+    ]
+
+    const router =new  VueRouter({
+        routes
+    })
+
+    const vm = new Vue({
+        el:'#app',
+        router
+    })
+
+
+</script>
